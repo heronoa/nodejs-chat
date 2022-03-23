@@ -2,6 +2,7 @@ const socket = io();
 
 socket.on('user-ok', (list) => { // SEPARA EM OUTRO ARQUIVO SÓ PARA O SOCKET
     switchShow('chat');
+    localStorage.removeItem('localUsername');
     textInput.focus();
 
     addMessage('status', null, "Conectado!")
@@ -35,14 +36,17 @@ socket.on('disconnect', () => {
     addMessage('status', null, 'Você foi desconectado!')
     userList = [];
     renderUserList();
+    localStorage.setItem('localUsername', username)
 });
 
 socket.on('reconnect_error', () => {
     addMessage('status', null, 'Tentando reconectar...')
 })
 socket.on('reconnect', () => {
-    addMessage('status', null, 'Reconectado!');
-    if(username != '') {
+    let username = localStorage.getItem('localUsername')
+    addMessage('status', null, `${username} reconectado!`);
+    if(username !== '') {
         socket.emit('join-request', username);
+        localStorage.removeItem('localUsername');
     }
 })

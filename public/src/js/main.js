@@ -59,6 +59,7 @@ function addMessage(type, user, message) {
                 ul.innerHTML += `<li class="m-txt"><span>${user}:</span> ${message}</li>`;
             }
         break
+
     }
 
     ul.scrollTop = ul.scrollHeight;
