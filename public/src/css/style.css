@@ -2,6 +2,24 @@ body {
     margin: 0;
 }
 
+/* SCROLLBAR STYLES */
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
 ul,
 li {
     margin: 0;
@@ -17,7 +35,6 @@ li {
 }
 
 #loginPage {
-    display: flex;
     background-color: #FFF;
 }
 
@@ -28,12 +45,8 @@ li {
     padding: 10px;
     border-radius: 5px;
     outline: 0;
-    width: 100%;
-    max-width: 400px;
-}
-
-#chatPage {
-    display: none;
+    width: 80%;
+    max-width: 700px;
 }
 
 .chatArea {
@@ -94,4 +107,30 @@ li {
     background-color: #ccc;
     outline: 0;
     border: 0;
+}
+
+#chatTextInput::placeholder {
+    text-transform: uppercase;
+}
+
+/* SITUATIONAL */
+
+.show {
+    display: flex;
+}
+
+.noShow {
+    display: none;
+}
+
+/* MEDIA QUERIES */
+
+@media (max-width: 400px) {
+    .userList {
+        width: 100px;
+    }
+
+    #chatTextInput {
+        font-size: 12px;
+    }
 }

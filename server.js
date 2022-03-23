@@ -42,14 +42,15 @@ io.on('connection', (socket)=>{
 
     });
 
-    socket.on('send-msg', (txt) => {
-        let obj = {
+    socket.on('send-msg', (text) => {
+        let object = {
             username: socket.username,
-            message: txt
+            message: text
         };
 
-        socket.emit('show-msg', obj);
-        socket.broadcast.emit('show-msg', obj);
+        socket.emit('show-msg', object);
+        socket.broadcast.emit('show-msg', object);
+        socket.broadcast.emit('warning-msg', object);
     });
 
 });
